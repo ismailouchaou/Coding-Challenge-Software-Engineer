@@ -1,0 +1,20 @@
+{
+    "name": "coding-challenge-software-engineer",
+    "version": "1.0.0",
+    "description": "Coding Challenge Software Engineer",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ismailouchaou/Coding-Challenge-Software-Engineer.git"
+    },
+    "keywords": [],
+    "author": "OUCHAOU Ismail",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ismailouchaou/Coding-Challenge-Software-Engineer/issues"
+    },
+    "homepage": "https://github.com/ismailouchaou/Coding-Challenge-Software-Engineer#readme"
+}
