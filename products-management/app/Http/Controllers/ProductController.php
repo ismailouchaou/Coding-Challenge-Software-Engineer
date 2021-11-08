@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\TheBaseController;
+use App\Http\Resources\productResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $category = Product::all();
+        $basectrl = new TheBaseController;
+
+        return $basectrl->sendResponse(productResource::collection($category),'all Products has been recieved');
     }
 
     /**
@@ -35,7 +41,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->all();
+        $validator = Validator::make($inputs, [
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $basectrl = new TheBaseController;
+
+        if ($validator->fails()) {
+            return $basectrl->sendError('All fields are required', $validator->errors());
+        }
+
+        $product = Product::create($inputs);
+            return $basectrl->sendResponse(new productResource($product), 'the product has been added successfully');
+
     }
 
     /**

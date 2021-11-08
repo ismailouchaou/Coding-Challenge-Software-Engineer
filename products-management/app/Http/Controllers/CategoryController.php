@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\Api\TheBaseController;
+use App\Http\Resources\categoryResource as categoryResources;
+
 
 class CategoryController extends Controller
 {
@@ -14,7 +18,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = Category::all();
+        $basectrl = new TheBaseController;
+
+        return $basectrl->sendResponse(categoryResources::collection($category),'All categoies has been recieved');
     }
 
     /**
