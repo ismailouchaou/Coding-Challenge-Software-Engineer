@@ -14,14 +14,23 @@ class Category extends Model
         'parent_category'
     ];
 
-    public function parent()
-    {
-        return $this->belongsTo('Category', 'parent_category');
-    }
+    // public function parent()
+    // {
+    //     return $this->belongsTo('Category', 'parent_category');
+    // }
 
-    public function children()
+    // public function children()
+    // {
+    //     return $this->hasMany('Category', 'parent_category');
+    // }
+    /**
+     * Get the category that owns the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category(): BelongsTo
     {
-        return $this->hasMany('Category', 'parent_category');
+        return $this->belongsTo(Category::class, 'parent_category');
     }
 
     /**

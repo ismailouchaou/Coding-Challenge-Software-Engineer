@@ -13,7 +13,8 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'image'
+        'image',
+        'category_id'
     ];
 
     /**
@@ -23,6 +24,6 @@ class Product extends Model
      */
     public function categories(): HasMany
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'category_id');
     }
 }
